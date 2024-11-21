@@ -57,15 +57,6 @@ void metterajourpersonne(personne *p)
  printf("Nouveau code postal: ");
   scanf("%s", p->adr.codepostal);
  }
-
-    
-
-
-
-
-
-
-
 int main() {
     int n=0 , choix , index;
     while (1) {
@@ -106,19 +97,26 @@ int main() {
         
                 break;
                 printf("Quitter le programme.\n");
-            default:
+            
             printf("Choix invalide.\n");
                 break;
                 case 4:
                 scanf("%d", &index);
                  if (index > 0 && index <= n){
                  metterajourpersonne(&personnes[index - 1]);
-                 (&personnes[index - 1]);
-                } else{
+                } else
+                {
                     printf("index valid");
                 }
                 case 5:
-                printf("quitter.\n");
+                printf("quitter  le programme.\n");
+                return 0;
+                
+                 default: 
+                 printf("Choix invalide.\n");
+
+
+            
             } 
 
     }
