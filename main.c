@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 typedef struct {
      char titre[45];
      char description[123];
@@ -17,13 +16,16 @@ void afficheraddition(){
     printf("\n1.ajouter un tache\n2.afficher list taches\n3.modifier un taches\n4.supprimer un tache\n5.feltrer les tache priote\n6.qiutter\n");
 }
 void ajoutertache(){
- tache tac; 
+ tache tac;
     printf("donne titre:");
-    scanf("%s",tac.titre);
+    scanf("%[^\n]",tac.titre);
+    getchar();
     printf("description :");
-    scanf("%s",tac.description);
+    scanf("%[^\n]",tac.description);
+    getchar();
     printf("date echeance (nn/jj/mm) :");
     scanf("%s",tac.datecheance);
+    getchar();
     printf("priorte(high ,low):");
     scanf("%s",tac.priorte);
     add[nombreadd]=tac;
@@ -39,7 +41,7 @@ void affichertache(tache tac){
     }
 void afficherlisteadd(){
     for(int i=0 ; i<nombreadd ; i++){
-        printf("\ntach:%d:/n",i+1);
+        printf("\ntach %d:\n",i+1);
         affichertache(add[i]);
 
     }
@@ -48,20 +50,26 @@ void modifiertache(){
     int indek;
     printf("entrez l indek de la tache à modifier (1 à %d):", nombreadd);
     scanf("%d", &indek);
+    getchar();
     if( indek> 0 && indek <= nombreadd){
         tache*tac = &add[indek - 1];
        
         printf("entre nouveau titre:");
-        scanf("¨%[^n]",tac->titre);
+        scanf("%[^\n]",tac->titre);
+        getchar();
         printf(" entre nouveau description :");
-         scanf("%s",tac->description);
+        scanf("%[^\n]",tac->description);
+        getchar();
         printf("entre nouveau de date echeeance (nn/jj/mm):");
-         scanf("%s",tac->datecheance);
+        scanf("%s",tac->datecheance);
+        getchar();
         printf("entre nouveau de priorte(wigh , low):"); 
-         scanf("%s",tac->priorte);
+        scanf("%s",tac->priorte);
+        getchar();
         printf("tache modifier avec susses .\n");
           }
-          else{ printf("indek invalide .\n");
+          else{
+             printf("indek invalide .\n");
           }
           }   
           void supprimertache(){
@@ -71,7 +79,7 @@ void modifiertache(){
             if( indek>0 && indek <=nombreadd){
                 for(int i=indek -1 ; indek<nombreadd -1 ; i++){
                     add[i] = add[i+1];
-     }
+        }
      nombreadd-- ;
      printf("tach supprimer avec susses.\n:");
 
@@ -91,7 +99,7 @@ void modifiertache(){
         }
     }
 
-     }
+    }
      int main()
      {
         int choix ;
@@ -99,6 +107,7 @@ void modifiertache(){
         afficheraddition();
             printf("Choisissez une option : ");
             scanf("%d", &choix);
+            getchar();
 
             switch(choix) 
             {
@@ -118,7 +127,7 @@ void modifiertache(){
                 supprimertache();
                 break;
                  case 5:
-                filtreraddparpriorite();
+                 filtreraddparpriorite();
                 break;
                  case 6:
                 printf("quitterb la programme");
